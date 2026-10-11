@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#11101b">
+<meta name="description" content="A private, offline-friendly Mafia role dealer for pass-and-play parties.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>MAFIA — Pass & Play</title>
+<style>
+:root{color-scheme:dark;--bg:#11101b;--panel:#1b1928;--panel2:#242135;--ink:#f7f4ff;--muted:#aaa5bf;--line:#39354d;--red:#ff5269;--gold:#ffd166;--mint:#6ee7b7;--blue:#8b9cff;--radius:24px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100svh}button,input{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.app{min-height:100svh;background:radial-gradient(ellipse at 50% -20%,#33233f 0,transparent 52%),var(--bg);padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);display:flex;flex-direction:column;align-items:center}.wrap{width:100%;max-width:480px;padding:22px 0 30px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.18em;font-size:13px}.brand-mark{width:34px;height:34px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#1a1018;font-size:19px;box-shadow:0 5px 20px #ff526933}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:800;color:var(--red);margin:0 0 10px}.muted{color:var(--muted)}h1{font-size:clamp(34px,9vw,46px);line-height:1.02;letter-spacing:-.055em;margin:0 0 13px}h2{font-size:23px;letter-spacing:-.035em;margin:0 0 8px}p{line-height:1.55}.intro{color:var(--muted);margin:0 0 25px;font-size:14px}.panel{background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:0 12px 35px #00000012}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.section-head label,.field-label{font-size:13px;font-weight:750}.hint{font-size:11px;color:var(--muted)}.stepper{display:flex;align-items:center;justify-content:space-between;background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:7px}.stepper button{border:0;background:#39354d;color:var(--ink);width:43px;height:43px;border-radius:12px;font-size:23px}.stepper button:disabled{opacity:.28;cursor:not-allowed}.count{font-weight:850;font-size:26px;min-width:40px;text-align:center;font-variant-numeric:tabular-nums}.stepper small{display:block;font-size:10px;color:var(--muted);font-weight:600;margin-top:1px}.field{margin-bottom:20px}.field:last-child{margin-bottom:0}.stepper.compact{padding:5px}.stepper.compact button{width:38px;height:38px}.stepper.compact .count{font-size:21px}.option-row{display:flex;align-items:center;justify-content:space-between;gap:14px}.toggle{position:relative;width:52px;height:30px;flex:none}.toggle input{position:absolute;opacity:0;width:100%;height:100%;margin:0}.toggle span{position:absolute;inset:0;background:#4a465d;border-radius:20px;transition:.2s;pointer-events:none}.toggle span:after{content:"";position:absolute;width:22px;height:22px;left:4px;top:4px;background:white;border-radius:50%;transition:.2s}.toggle input:checked+span{background:var(--red)}.toggle input:checked+span:after{transform:translateX(22px)}.role-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.summary-item{background:var(--panel2);border-radius:14px;padding:12px}.summary-top{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}.dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}.summary-item strong{display:block;font-size:22px;margin-top:6px}.summary-item:last-child{grid-column:span 2}.summary-item.mafia .dot{background:var(--red)}.summary-item.doctor .dot{background:var(--mint)}.summary-item.detective .dot{background:var(--gold)}.summary-item.jester .dot{background:#d49cff}.summary-item.civilian .dot{background:var(--blue)}.notice{display:flex;gap:10px;background:#ffd16612;border:1px solid #ffd1663b;color:#e9d9a9;padding:12px 13px;border-radius:14px;font-size:12px;line-height:1.45;margin:14px 0}.btn{width:100%;border:0;border-radius:16px;padding:16px 18px;font-weight:850;letter-spacing:-.01em;min-height:54px;transition:transform .12s,opacity .12s}.btn:active{transform:scale(.985)}.btn-primary{background:var(--red);color:#1d111a;box-shadow:0 9px 24px #ff52692b}.btn-secondary{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}.btn-quiet{background:transparent;color:var(--muted);padding:12px;min-height:42px}.btn:disabled{opacity:.4;cursor:not-allowed}.screen{display:none}.screen.active{display:block;animation:rise .25s ease}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.progress-line{height:5px;border-radius:10px;background:#302c42;overflow:hidden;margin:19px 0 27px}.progress-line div{height:100%;background:var(--red);transition:width .25s}.player-meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:700}.player-meta strong{color:var(--ink)}.role-card{min-height:340px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(145deg,#262238,#1a1827);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 22px;margin:18px 0;position:relative;overflow:hidden}.role-card:before,.role-card:after{content:"";position:absolute;width:200px;height:200px;border:1px solid #ffffff09;border-radius:50%;pointer-events:none}.role-card:before{top:-120px;right:-85px}.role-card:after{bottom:-135px;left:-80px;width:250px;height:250px}.role-icon{width:86px;height:86px;border-radius:26px;display:grid;place-items:center;font-size:40px;background:#ffffff0a;margin-bottom:20px;border:1px solid #ffffff10}.role-card h2{font-size:32px;margin:0 0 10px}.role-card p{margin:0;color:var(--muted);font-size:14px;max-width:260px}.role-card .eyebrow{margin-bottom:9px}.role-card.hidden-role .role-icon{background:#ff526915;color:var(--red)}.role-card.revealed{border-color:#ffffff22}.role-card[data-role="Mafia"] .role-icon{color:var(--red);background:#ff526916}.role-card[data-role="Doctor"] .role-icon{color:var(--mint);background:#6ee7b715}.role-card[data-role="Detective"] .role-icon{color:var(--gold);background:#ffd16615}.role-card[data-role="Jester"] .role-icon{color:#d49cff;background:#d49cff15}.role-card[data-role="Civilian"] .role-icon{color:var(--blue);background:#8b9cff15}.privacy-note{font-size:12px;color:var(--muted);text-align:center;margin:0 0 16px}.actions{display:grid;gap:10px}.game-over-icon{width:90px;height:90px;border-radius:28px;display:grid;place-items:center;font-size:42px;background:#ff526916;margin:0 auto 22px}.center{text-align:center}.center .intro{max-width:320px;margin:0 auto 25px}.game-status{border:1px solid #6ee7b74d;background:#6ee7b710;border-radius:20px;padding:20px;display:flex;gap:13px;align-items:center;text-align:left;margin:25px 0}.status-dot{width:11px;height:11px;background:var(--mint);border-radius:50%;box-shadow:0 0 0 6px #6ee7b714;flex:none}.game-status strong{display:block;font-size:14px;margin-bottom:4px}.game-status span{display:block;color:var(--muted);font-size:12px}.footer{text-align:center;color:#716c85;font-size:10px;margin-top:22px;letter-spacing:.08em}.error{font-size:12px;color:#ffb5be;margin-top:10px;display:none}.error.show{display:block}@media(min-height:800px){.wrap{padding-top:30px}.role-card{min-height:390px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app"><main class="wrap">
+<header class="top"><div class="brand"><div class="brand-mark">♠</div><span>MAFIA</span></div><span class="muted" style="font-size:11px;font-weight:700;letter-spacing:.12em">PASS & PLAY</span></header>
+<section id="setup" class="screen active">
+<p class="eyebrow">Your game. Your rules.</p><h1>Set the<br>scene.</h1><p class="intro">Choose your players and secret roles. We'll deal the roles fairly at random.</p>
+<div class="panel">
+<div class="field"><div class="section-head"><label for="players">Number of players</label><span class="hint">4–30 players</span></div><div class="stepper"><button type="button" data-step="players" data-delta="-1" aria-label="Fewer players">−</button><div class="count"><span id="playersValue">8</span><small>PLAYERS</small></div><button type="button" data-step="players" data-delta="1" aria-label="More players">+</button></div></div>
+<div class="field"><div class="section-head"><label for="mafia">Mafia</label><span class="hint">Up to 2</span></div><div class="stepper compact"><button type="button" data-step="mafia" data-delta="-1" aria-label="Fewer mafia">−</button><div class="count" id="mafiaValue">2</div><button type="button" data-step="mafia" data-delta="1" aria-label="More mafia">+</button></div></div>
+<div class="field"><div class="section-head"><label for="doctors">Doctors</label><span class="hint">Up to 2</span></div><div class="stepper compact"><button type="button" data-step="doctors" data-delta="-1" aria-label="Fewer doctors">−</button><div class="count" id="doctorsValue">1</div><button type="button" data-step="doctors" data-delta="1" aria-label="More doctors">+</button></div></div>
+<div class="field"><div class="option-row"><div><div class="field-label">Detective</div><div class="hint" style="margin-top:4px">Always included · 1 player</div></div><div style="font-size:22px">🕵️</div></div></div>
+<div class="field"><div class="option-row"><div><div class="field-label">Add a Jester?</div><div class="hint" style="margin-top:4px">Wins if the group votes them out</div></div><label class="toggle"><input type="checkbox" id="jester" checked aria-label="Add a Jester"><span></span></label></div></div>
+<div class="role-summary" id="summary"></div>
+<div id="validation" class="error" role="alert"></div>
+</div>
+<div class="notice"><span>✦</span><span>Hand the phone around one at a time. Each player should keep their role secret and tap <b>Hide & pass</b> before giving the phone away.</span></div>
+<button class="btn btn-primary" id="dealBtn">Shuffle & deal roles <span aria-hidden="true">→</span></button>
+<div class="footer">NO ACCOUNTS · NO INTERNET NEEDED · JUST YOUR CREW</div>
+</section>
+<section id="dealing" class="screen">
+<p class="eyebrow">Keep it secret</p><h1>Who's<br>who?</h1><p class="intro">Pass the phone to each player in order. Make sure nobody else is looking.</p>
+<div class="player-meta"><span id="playerLabel">PLAYER 1</span><strong id="progressLabel">1 OF 8</strong></div><div class="progress-line"><div id="progressFill" style="width:12.5%"></div></div>
+<div class="role-card hidden-role" id="roleCard"><div class="role-icon" id="roleIcon">?</div><p class="eyebrow" id="cardEyebrow">YOUR SECRET ROLE</p><h2 id="roleTitle">Ready, Player 1?</h2><p id="roleDescription">Tap below when you're ready to reveal your role.</p></div>
+<p class="privacy-note" id="privacyNote">Keep the screen facing only you.</p>
+<div class="actions"><button class="btn btn-primary" id="revealBtn">Reveal my role <span aria-hidden="true">↗</span></button><button class="btn btn-secondary" id="nextBtn" style="display:none">Hide & pass to next player →</button><button class="btn btn-quiet" id="backBtn">← Back to setup</button></div>
+</section>
+<section id="playing" class="screen center">
+<div style="font-size:55px;margin:18px 0 20px">🌘</div><p class="eyebrow">All roles have been dealt</p><h1>The game<br>is in progress.</h1><p class="intro">Everyone knows their role. Put the phone away, gather around, and let the game begin.</p>
+<div class="game-status"><div class="status-dot"></div><div><strong>Game is in progress</strong><span id="gameSummary">8 players · 2 Mafia · 1 Doctor · 1 Detective · 1 Jester</span></div></div>
+<div class="panel" style="text-align:left"><div class="field-label" style="margin-bottom:7px">Ready for another round?</div><p class="muted" style="font-size:13px;margin:0">Your player count and role choices will be saved on this screen. You can change them before dealing again.</p></div>
+<div class="actions"><button class="btn btn-primary" id="restartBtn">Restart with same settings ↻</button><button class="btn btn-secondary" id="editBtn">Edit settings</button></div>
+<div class="footer">MAY THE BEST LIAR WIN</div>
+</section>
+</main></div>
+<script>
+(() => {
+  const state = { players: 8, mafia: 2, doctors: 1, jester: true, roles: [], current: 0, revealed: false };
+  const $ = id => document.getElementById(id);
+  const screens = ['setup', 'dealing', 'playing'];
+  const roleInfo = {
+    Mafia: { icon: '♟', description: 'You are Mafia. Work with your fellow Mafia secretly and avoid getting voted out.', color: 'mafia' },
+    Doctor: { icon: '✚', description: 'You are the Doctor. Use your healing ability according to your group’s rules.', color: 'doctor' },
+    Detective: { icon: '⌕', description: 'You are the Detective. Investigate suspicious players according to your group’s rules.', color: 'detective' },
+    Jester: { icon: '♛', description: 'You are the Jester. Get the group to vote you out to win!', color: 'jester' },
+    Civilian: { icon: '♙', description: 'You are a Civilian. Talk, observe, and help the town identify the Mafia.', color: 'civilian' }
+  };
+  function showScreen(id) { screens.forEach(s => $(s).classList.toggle('active', s === id)); window.scrollTo({top:0,behavior:'smooth'}); }
+  function roleCounts() { return { Mafia: state.mafia, Doctor: state.doctors, Detective: 1, Jester: state.jester ? 1 : 0, Civilian: state.players - state.mafia - state.doctors - 1 - (state.jester ? 1 : 0) }; }
+  function valid() { const reserved = state.mafia + state.doctors + 1 + (state.jester ? 1 : 0); return reserved <= state.players; }
+  function renderSetup() {
+    $('playersValue').textContent = state.players;
+    $('mafiaValue').textContent = state.mafia;
+    $('doctorsValue').textContent = state.doctors;
+    $('jester').checked = state.jester;
+    const counts = roleCounts();
+    const items = [ ['mafia','Mafia',counts.Mafia], ['doctor','Doctors',counts.Doctor], ['detective','Detective',1], ['jester','Jester',counts.Jester], ['civilian','Civilians',counts.Civilian] ];
+    $('summary').innerHTML = items.map(([cls,name,count]) => `<div class="summary-item ${cls}"><div class="summary-top"><span class="dot"></span>${name}</div><strong>${count}</strong></div>`).join('');
+    $('validation').classList.toggle('show', !valid());
+    $('validation').textContent = valid() ? '' : 'There aren’t enough players for these roles. Add players or reduce a role count.';
+    $('dealBtn').disabled = !valid();
+    document.querySelectorAll('[data-step]').forEach(btn => {
+      const key = btn.dataset.step, delta = Number(btn.dataset.delta);
+      let disabled = false;
+      if (key === 'players') disabled = delta < 0 ? state.players <= 4 : state.players >= 30;
+      if (key === 'mafia') disabled = delta < 0 ? state.mafia <= 0 : state.mafia >= 2 || state.mafia + 1 > state.players;
+      if (key === 'doctors') disabled = delta < 0 ? state.doctors <= 0 : state.doctors >= 2 || state.mafia + state.doctors + 1 + (state.jester ? 1 : 0) >= state.players;
+      btn.disabled = disabled;
+    });
+  }
+  document.querySelectorAll('[data-step]').forEach(btn => btn.addEventListener('click', () => {
+    const key = btn.dataset.step, delta = Number(btn.dataset.delta);
+    state[key] += delta;
+    if (key === 'players') {
+      while (!valid() && state.doctors > 0) state.doctors--;
+      while (!valid() && state.mafia > 0) state.mafia--;
+    }
+    renderSetup();
+  }));
+  $('jester').addEventListener('change', e => { state.jester = e.target.checked; renderSetup(); });
+  function shuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } return array; }
+  function deal() {
+    if (!valid()) return;
+    const counts = roleCounts();
+    state.roles = shuffle(Object.entries(counts).flatMap(([role,count]) => Array(count).fill(role)));
+    state.current = 0; state.revealed = false; renderPlayer(); showScreen('dealing');
+  }
+  function renderPlayer() {
+    const total = state.roles.length, player = state.current + 1;
+    $('playerLabel').textContent = `PLAYER ${player}`;
+    $('progressLabel').textContent = `${player} OF ${total}`;
+    $('progressFill').style.width = `${player / total * 100}%`;
+    $('roleCard').className = 'role-card hidden-role';
+    $('roleCard').removeAttribute('data-role');
+    $('roleIcon').textContent = '?';
+    $('cardEyebrow').textContent = 'YOUR SECRET ROLE';
+    $('roleTitle').textContent = `Ready, Player ${player}?`;
+    $('roleDescription').textContent = 'Tap below when you’re ready to reveal your role.';
+    $('privacyNote').textContent = 'Keep the screen facing only you.';
+    $('revealBtn').style.display = 'block'; $('nextBtn').style.display = 'none';
+    $('nextBtn').textContent = player === total ? 'Hide role & start the game →' : 'Hide & pass to next player →';
+  }
+  $('revealBtn').addEventListener('click', () => {
+    if (state.revealed) return;
+    state.revealed = true;
+    const role = state.roles[state.current], info = roleInfo[role];
+    $('roleCard').className = `role-card revealed ${info.color}`;
+    $('roleCard').dataset.role = role;
+    $('roleIcon').textContent = info.icon;
+    $('cardEyebrow').textContent = 'YOUR SECRET ROLE';
+    $('roleTitle').textContent = role;
+    $('roleDescription').textContent = info.description;
+    $('privacyNote').textContent = 'Memorize your role, then hide it before passing the phone.';
+    $('revealBtn').style.display = 'none'; $('nextBtn').style.display = 'block';
+  });
+  $('nextBtn').addEventListener('click', () => {
+    if (!state.revealed) return;
+    if (state.current < state.roles.length - 1) { state.current++; state.revealed = false; renderPlayer(); }
+    else {
+      const c = roleCounts();
+      $('gameSummary').textContent = `${state.players} players · ${c.Mafia} Mafia · ${c.Doctor} Doctors · 1 Detective · ${state.jester ? '1 Jester' : 'no Jester'} · ${c.Civilian} Civilians`;
+      showScreen('playing');
+    }
+  });
+  $('backBtn').addEventListener('click', () => showScreen('setup'));
+  $('dealBtn').addEventListener('click', deal);
+  $('restartBtn').addEventListener('click', deal);
+  $('editBtn').addEventListener('click', () => { renderSetup(); showScreen('setup'); });
+  renderSetup();
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+  }
+})();
+</script>
+</body>
+</html>
